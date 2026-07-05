@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help Animals — Rescue, Care & Rehoming for Abandoned Animals</title>
+<meta name="description" content="Help Animals rescues mistreated and abandoned animals, gives them medical care and shelter, and finds them safe, loving homes. Report abuse, adopt, donate or volunteer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#14342B;
+  --pine-deep:#0D241E;
+  --sage:#DFE8DD;
+  --paper:#FBF9F4;
+  --rescue:#FF6B35;
+  --rescue-soft:#FFE3D6;
+  --ink:#1F2A26;
+  --muted:#5C6B64;
+  --radius:18px;
+  --font-display:"Fraunces",serif;
+  --font-body:"Nunito Sans",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--font-display);line-height:1.15;font-weight:600}
+a{color:inherit}
+.container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---------- Emergency bar ---------- */
+.emergency{
+  background:var(--rescue);
+  color:#fff;
+  text-align:center;
+  padding:10px 16px;
+  font-size:.9rem;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.emergency a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- Nav ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(251,249,244,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(20,52,43,.1);
+}
+nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--pine);text-decoration:none}
+.logo svg{width:34px;height:34px}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink);transition:color .2s}
+.nav-links a:hover{color:var(--rescue)}
+.btn{
+  display:inline-block;
+  background:var(--rescue);
+  color:#fff;
+  font-weight:800;
+  padding:13px 26px;
+  border-radius:999px;
+  text-decoration:none;
+  border:none;
+  cursor:pointer;
+  font-size:.95rem;
+  font-family:var(--font-body);
+  transition:transform .15s,box-shadow .2s,background .2s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,107,53,.35)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--rescue);outline-offset:3px}
+.btn.ghost{background:transparent;border:2px solid var(--pine);color:var(--pine)}
+.btn.ghost:hover{background:var(--pine);color:#fff;box-shadow:none}
+.btn.light{background:#fff;color:var(--pine)}
+.btn.light:hover{box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.menu-toggle svg{width:26px;height:26px;stroke:var(--pine)}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:var(--pine);
+  color:var(--paper);
+  position:relative;
+  overflow:hidden;
+  padding:96px 0 110px;
+}
+.hero .container{position:relative;z-index:2}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.8rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--rescue);
+  margin-bottom:20px;
+}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--rescue)}
+.hero h1{
+  font-size:clamp(2.4rem,6vw,4.3rem);
+  max-width:14ch;
+  margin-bottom:24px;
+}
+.hero h1 em{font-style:italic;color:var(--rescue)}
+.hero p{max-width:52ch;font-size:1.15rem;color:var(--sage);margin-bottom:36px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+/* paw trail — signature */
+.paw-trail{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.16}
+.paw{position:absolute;width:34px;height:34px;fill:var(--sage)}
+.paw:nth-child(odd){transform:rotate(-18deg)}
+.paw:nth-child(even){transform:rotate(14deg)}
+
+/* ---------- Stats strip ---------- */
+.stats{background:var(--pine-deep);color:var(--paper);padding:34px 0}
+.stats .container{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat b{display:block;font-family:var(--font-display);font-size:2.1rem;color:var(--rescue)}
+.stat span{font-size:.88rem;color:var(--sage);font-weight:600}
+
+/* ---------- Sections ---------- */
+section{padding:90px 0}
+.section-head{max-width:640px;margin-bottom:52px}
+.section-head h2{font-size:clamp(1.9rem,4vw,2.7rem);color:var(--pine);margin-bottom:14px}
+.section-head p{color:var(--muted);font-size:1.05rem}
+
+/* Mission */
+.mission{background:var(--paper)}
+.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{
+  background:#fff;
+  border:1px solid rgba(20,52,43,.09);
+  border-radius:var(--radius);
+  padding:34px 28px;
+  transition:transform .2s,box-shadow .2s;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 32px rgba(20,52,43,.1)}
+.card .icon{
+  width:52px;height:52px;border-radius:14px;
+  background:var(--rescue-soft);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;
+}
+.card .icon svg{width:26px;height:26px;stroke:var(--rescue)}
+.card h3{font-size:1.25rem;color:var(--pine);margin-bottom:10px}
+.card p{color:var(--muted);font-size:.97rem}
+
+/* How it works */
+.how{background:var(--sage)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+.step{
+  background:var(--paper);
+  border-radius:var(--radius);
+  padding:30px 24px;
+  position:relative;
+  counter-increment:step;
+}
+.step::before{
+  content:counter(step,decimal-leading-zero);
+  font-family:var(--font-display);
+  font-size:.95rem;
+  font-weight:700;
+  color:var(--rescue);
+  letter-spacing:.06em;
+  display:block;
+  margin-bottom:14px;
+}
+.step h3{font-size:1.1rem;color:var(--pine);margin-bottom:8px}
+.step p{font-size:.92rem;color:var(--muted)}
+
+/* Adopt */
+.adopt{background:var(--paper)}
+.adopt-wrap{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
+}
+.adopt-list{list-style:none;display:flex;flex-direction:column;gap:16px;margin:26px 0 34px}
+.adopt-list li{display:flex;gap:14px;align-items:flex-start;font-size:1rem;color:var(--ink)}
+.adopt-list svg{width:22px;height:22px;stroke:var(--rescue);flex-shrink:0;margin-top:3px}
+.adopt-panel{
+  background:var(--pine);
+  color:var(--paper);
+  border-radius:var(--radius);
+  padding:42px 36px;
+}
+.adopt-panel h3{font-size:1.5rem;margin-bottom:16px}
+.adopt-panel p{color:var(--sage);font-size:.98rem;margin-bottom:12px}
+.adopt-panel .tag{
+  display:inline-block;background:rgba(255,107,53,.18);color:var(--rescue);
+  font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:6px 14px;border-radius:999px;margin-bottom:18px;
+}
+
+/* Help ways */
+.help{background:var(--pine);color:var(--paper)}
+.help .section-head h2{color:var(--paper)}
+.help .section-head p{color:var(--sage)}
+.help-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.help-card{
+  background:rgba(251,249,244,.06);
+  border:1px solid rgba(251,249,244,.14);
+  border-radius:var(--radius);
+  padding:34px 28px;
+  display:flex;flex-direction:column;
+}
+.help-card h3{font-size:1.3rem;margin-bottom:10px;color:#fff}
+.help-card p{color:var(--sage);font-size:.95rem;flex:1;margin-bottom:24px}
+.help-card .amount{
+  font-family:var(--font-display);
+  font-size:1.9rem;color:var(--rescue);
+  margin-bottom:6px;
+}
+
+/* Report */
+.report{background:var(--rescue);color:#fff;text-align:center;padding:76px 0}
+.report h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:14px}
+.report p{max-width:56ch;margin:0 auto 30px;font-size:1.05rem;opacity:.95}
+
+/* Contact / form */
+.contact{background:var(--paper)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+.contact-info h3{font-size:1.15rem;color:var(--pine);margin-bottom:6px}
+.contact-info p{color:var(--muted);margin-bottom:22px}
+form{display:flex;flex-direction:column;gap:16px}
+label{font-weight:700;font-size:.88rem;color:var(--pine)}
+input,textarea,select{
+  font-family:var(--font-body);
+  font-size:1rem;
+  padding:13px 16px;
+  border:1.5px solid rgba(20,52,43,.2);
+  border-radius:12px;
+  background:#fff;
+  color:var(--ink);
+  width:100%;
+}
+input:focus,textarea:focus,select:focus{outline:3px solid rgba(255,107,53,.35);border-color:var(--rescue)}
+.form-note{font-size:.85rem;color:var(--muted)}
+.form-success{
+  display:none;
+  background:var(--sage);
+  border-radius:12px;
+  padding:16px;
+  font-weight:700;
+  color:var(--pine);
+}
+
+/* Footer */
+footer{background:var(--pine-deep);color:var(--sage);padding:56px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer .logo{color:var(--paper);margin-bottom:14px}
+footer p{font-size:.92rem;max-width:38ch}
+footer h4{color:#fff;font-size:.95rem;margin-bottom:14px;font-family:var(--font-body);font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+footer ul a{text-decoration:none;font-size:.92rem;transition:color .2s}
+footer ul a:hover{color:var(--rescue)}
+.footer-bottom{border-top:1px solid rgba(251,249,244,.12);padding-top:24px;font-size:.82rem;text-align:center;color:rgba(223,232,221,.6)}
+
+/* Reveal on scroll */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn:hover,.card:hover{transform:none}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .mission-grid,.help-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .adopt-wrap,.contact-wrap{grid-template-columns:1fr;gap:40px}
+  .stats .container{grid-template-columns:1fr 1fr;gap:28px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .nav-links{
+    display:none;
+    position:absolute;top:72px;left:0;right:0;
+    background:var(--paper);
+    flex-direction:column;
+    padding:20px 24px 28px;
+    gap:18px;
+    border-bottom:1px solid rgba(20,52,43,.12);
+    box-shadow:0 16px 30px rgba(20,52,43,.12);
+  }
+  .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+  .mission-grid,.help-grid,.steps{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .hero{padding:72px 0 84px}
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="emergency">
+  Found an animal in danger? Call our 24/7 rescue line: <a href="tel:+10000000000">+1 (000) 000-0000</a>
+</div>
+
+<header>
+  <nav class="container">
+    <a href="#" class="logo" aria-label="Help Animals home">
+      <svg viewBox="0 0 24 24" fill="#FF6B35" aria-hidden="true">
+        <ellipse cx="7" cy="7.5" rx="2" ry="2.7"/>
+        <ellipse cx="12" cy="5.6" rx="2" ry="2.7"/>
+        <ellipse cx="17" cy="7.5" rx="2" ry="2.7"/>
+        <path d="M12 10c-3.6 0-6.5 2.8-6.5 5.7 0 1.9 1.5 3.3 3.4 3.3 1.1 0 2.1-.5 3.1-.5s2 .5 3.1.5c1.9 0 3.4-1.4 3.4-3.3C18.5 12.8 15.6 10 12 10z"/>
+      </svg>
+      Help Animals
+    </a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#mission">Our Mission</a></li>
+      <li><a href="#how">How We Work</a></li>
+      <li><a href="#adopt">Adopt</a></li>
+      <li><a href="#help">Ways to Help</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#help" class="btn">Donate</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="paw-trail" aria-hidden="true">
+    <svg class="paw" style="top:12%;left:6%" viewBox="0 0 24 24"><ellipse cx="7" cy="7.5" rx="2" ry="2.7"/><ellipse cx="12" cy="5.6" rx="2" ry="2.7"/><ellipse cx="17" cy="7.5" rx="2" ry="2.7"/><path d="M12 10c-3.6 0-6.5 2.8-6.5 5.7 0 1.9 1.5 3.3 3.4 3.3 1.1 0 2.1-.5 3.1-.5s2 .5 3.1.5c1.9 0 3.4-1.4 3.4-3.3C18.5 12.8 15.6 10 12 10z"/></svg>
+    <svg class="paw" style="top:30%;left:14%" viewBox="0 0 24 24"><ellipse cx="7" cy="7.5" rx="2" ry="2.7"/><ellipse cx="12" cy="5.6" rx="2" ry="2.7"/><ellipse cx="17" cy="7.5" rx="2" ry="2.7"/><path d="M12 10c-3.6 0-6.5 2.8-6.5 5.7 0 1.9 1.5 3.3 3.4 3.3 1.1 0 2.1-.5 3.1-.5s2 .5 3.1.5c1.9 0 3.4-1.4 3.4-3.3C18.5 12.8 15.6 10 12 10z"/></svg>
+    <svg class="paw" style="top:52%;left:8%" viewBox="0 0 24 24"><ellipse cx="7" cy="7.5" rx="2" ry="2.7"/><ellipse cx="12" cy="5.6" rx="2" ry="2.7"/><ellipse cx="17" cy="7.5" rx="2" ry="2.7"/><path d="M12 10c-3.6 0-6.5 2.8-6.5 5.7 0 1.9 1.5 3.3 3.4 3.3 1.1 0 2.1-.5 3.1-.5s2 .5 3.1.5c1.9 0 3.4-1.4 3.4-3.3C18.5 12.8 15.6 10 12 10z"/></svg>
+    <svg class="paw" style="top:16%;right:14%" viewBox="0 0 24 24"><ellipse cx="7" cy="7.5" rx="2" ry="2.7"/><ellipse cx="12" cy="5.6" rx="2" ry="2.7"/><ellipse cx="17" cy="7.5" rx="2" ry="2.7"/><path d="M12 10c-3.6 0-6.5 2.8-6.5 5.7 0 1.9 1.5 3.3 3.4 3.3 1.1 0 2.1-.5 3.1-.5s2 .5 3.1.5c1.9 0 3.4-1.4 3.4-3.3C18.5 12.8 15.6 10 12 10z"/></svg>
+    <svg class="paw" style="top:38%;right:6%" viewBox="0 0 24 24"><ellipse cx="7" cy="7.5" rx="2" ry="2.7"/><ellipse cx="12" cy="5.6" rx="2" ry="2.7"/><ellipse cx="17" cy="7.5" rx="2" ry="2.7"/><path d="M12 10c-3.6 0-6.5 2.8-6.5 5.7 0 1.9 1.5 3.3 3.4 3.3 1.1 0 2.1-.5 3.1-.5s2 .5 3.1.5c1.9 0 3.4-1.4 3.4-3.3C18.5 12.8 15.6 10 12 10z"/></svg>
+    <svg class="paw" style="top:66%;right:16%" viewBox="0 0 24 24"><ellipse cx="7" cy="7.5" rx="2" ry="2.7"/><ellipse cx="12" cy="5.6" rx="2" ry="2.7"/><ellipse cx="17" cy="7.5" rx="2" ry="2.7"/><path d="M12 10c-3.6 0-6.5 2.8-6.5 5.7 0 1.9 1.5 3.3 3.4 3.3 1.1 0 2.1-.5 3.1-.5s2 .5 3.1.5c1.9 0 3.4-1.4 3.4-3.3C18.5 12.8 15.6 10 12 10z"/></svg>
+  </div>
+  <div class="container">
+    <span class="eyebrow">Animal Rescue Organization</span>
+    <h1>Every abandoned animal deserves a <em>second chance</em>.</h1>
+    <p>Help Animals rescues mistreated and abandoned animals, gives them medical care and a safe place to heal, and finds them the loving homes they should have had all along.</p>
+    <div class="hero-actions">
+      <a href="#adopt" class="btn">Adopt an Animal</a>
+      <a href="#help" class="btn light">Support a Rescue</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="container">
+    <div class="stat reveal"><b data-count="1240">0</b><span>Animals rescued</span></div>
+    <div class="stat reveal"><b data-count="980">0</b><span>Adoptions completed</span></div>
+    <div class="stat reveal"><b data-count="115">0</b><span>Active volunteers</span></div>
+    <div class="stat reveal"><b data-count="6">0</b><span>Years of service</span></div>
+  </div>
+</div>
+
+<section class="mission" id="mission">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>What we do</h2>
+      <p>From the moment a call comes in until adoption day, our team stays with every animal through the entire journey back to safety.</p>
+    </div>
+    <div class="mission-grid">
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9.5-9C.9 8.6 2.7 5 6 5c2 0 3.4 1.1 4 2 .6-.9 2-2 4-2 3.3 0 5.1 3.6 3.5 7-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+        <h3>Emergency Rescue</h3>
+        <p>Our field team responds to reports of abuse, neglect and abandonment, removing animals from dangerous situations quickly and safely.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18M7 7l10 10M17 7L7 17" opacity="0"/><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6V3z"/></svg></div>
+        <h3>Medical Care & Recovery</h3>
+        <p>Every rescued animal receives a full veterinary exam, vaccines, treatment and rehabilitation — plus time and patience to trust people again.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></div>
+        <h3>Responsible Rehoming</h3>
+        <p>We carefully match each animal with an adopter, run interviews and home checks, and follow up after adoption to make sure it's a happy ending.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>How a rescue happens</h2>
+      <p>A clear, proven process — from the first report to a new family.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <h3>Report received</h3>
+        <p>Someone calls our rescue line or fills in the online form. Our team evaluates the case and its urgency.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Rescue mission</h3>
+        <p>Trained volunteers go to the location, secure the animal and bring it safely to our shelter.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Care & recovery</h3>
+        <p>Veterinary treatment, nutrition, socialization and love — for as long as each animal needs.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Adoption day</h3>
+        <p>Once healthy and ready, the animal meets carefully screened adopters and goes home for good.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="adopt" id="adopt">
+  <div class="container adopt-wrap">
+    <div class="reveal">
+      <div class="section-head" style="margin-bottom:0">
+        <h2>Adopt, don't shop</h2>
+        <p>Right now, dozens of dogs and cats at our shelter are healthy, vaccinated and waiting for a family. Adopting saves two lives: the animal you take home, and the one who takes its place at the shelter.</p>
+      </div>
+      <ul class="adopt-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>All animals are vaccinated, dewormed and spayed/neutered</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Full health and behavior history provided</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Guidance and support during the adaptation period</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>No adoption fees — just responsibility and love</li>
+      </ul>
+      <a href="#contact" class="btn">Start the Adoption Process</a>
+    </div>
+    <div class="adopt-panel reveal">
+      <span class="tag">Can't adopt right now?</span>
+      <h3>Become a foster home</h3>
+      <p>Fostering gives a rescued animal a calm place to recover while it waits for adoption — and frees up shelter space so we can rescue another one.</p>
+      <p>We cover food and veterinary costs. You provide the temporary home and the affection.</p>
+      <a href="#contact" class="btn light" style="margin-top:14px">Apply to Foster</a>
+    </div>
+  </div>
+</section>
+
+<section class="help" id="help">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2>Ways to help</h2>
+      <p>Every rescue depends on people like you. Choose the way that fits your life.</p>
+    </div>
+    <div class="help-grid">
+      <div class="help-card reveal">
+        <div class="amount">$10 / month</div>
+        <h3>Feed a rescue</h3>
+        <p>A recurring donation covers food and basic supplies for one shelter animal every single month.</p>
+        <a href="#contact" class="btn">Donate Monthly</a>
+      </div>
+      <div class="help-card reveal">
+        <div class="amount">One-time gift</div>
+        <h3>Fund emergency care</h3>
+        <p>One-time donations go directly to veterinary emergencies: surgeries, treatments and rescue operations.</p>
+        <a href="#contact" class="btn">Make a Donation</a>
+      </div>
+      <div class="help-card reveal">
+        <div class="amount">Your time</div>
+        <h3>Volunteer with us</h3>
+        <p>Help at the shelter, drive rescue missions, organize adoption events or support us online — every hour counts.</p>
+        <a href="#contact" class="btn">Join the Team</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="report">
+  <div class="container reveal">
+    <h2>See abuse or abandonment? Don't look away.</h2>
+    <p>Your report can save a life. Contact us with the location and a short description of the situation — reports can be made anonymously, and our team responds every day of the week.</p>
+    <a href="#contact" class="btn light">Report a Case Now</a>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-wrap">
+    <div class="contact-info reveal">
+      <div class="section-head">
+        <h2>Get in touch</h2>
+        <p>Adoption, fostering, volunteering, donations or reports — send us a message and we'll reply as soon as possible.</p>
+      </div>
+      <h3>Rescue line (24/7)</h3>
+      <p><a href="tel:+10000000000">+1 (000) 000-0000</a></p>
+      <h3>Email</h3>
+      <p><a href="mailto:contact@helpanimals.org">contact@helpanimals.org</a></p>
+      <h3>Shelter visits</h3>
+      <p>By appointment — Monday to Saturday, 9am to 5pm.</p>
+    </div>
+    <form class="reveal" onsubmit="handleSubmit(event)">
+      <div>
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div>
+        <label for="subject">I want to...</label>
+        <select id="subject" name="subject" required>
+          <option value="">Select an option</option>
+          <option>Report abuse or abandonment</option>
+          <option>Adopt an animal</option>
+          <option>Become a foster home</option>
+          <option>Volunteer</option>
+          <option>Make a donation</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell us about the animal, the situation or how you'd like to help..."></textarea>
+      </div>
+      <button type="submit" class="btn">Send Message</button>
+      <p class="form-note">For urgent cases, always call the 24/7 rescue line.</p>
+      <p class="form-success" id="formSuccess">Message sent. Thank you — we'll get back to you soon! 🐾</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo">
+          <svg viewBox="0 0 24 24" fill="#FF6B35" aria-hidden="true">
+            <ellipse cx="7" cy="7.5" rx="2" ry="2.7"/>
+            <ellipse cx="12" cy="5.6" rx="2" ry="2.7"/>
+            <ellipse cx="17" cy="7.5" rx="2" ry="2.7"/>
+            <path d="M12 10c-3.6 0-6.5 2.8-6.5 5.7 0 1.9 1.5 3.3 3.4 3.3 1.1 0 2.1-.5 3.1-.5s2 .5 3.1.5c1.9 0 3.4-1.4 3.4-3.3C18.5 12.8 15.6 10 12 10z"/>
+          </svg>
+          Help Animals
+        </a>
+        <p>A nonprofit organization dedicated to rescuing mistreated and abandoned animals and giving them the life they deserve.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#mission">Our Mission</a></li>
+          <li><a href="#how">How We Work</a></li>
+          <li><a href="#adopt">Adopt</a></li>
+          <li><a href="#help">Ways to Help</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
+          <li><a href="mailto:contact@helpanimals.org">contact@helpanimals.org</a></li>
+          <li><a href="#contact">Send a message</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Help Animals. All rights reserved. Made with care for those who can't speak for themselves.</div>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+function toggleMenu(btn){
+  const nav=document.getElementById('navLinks');
+  const open=nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded',open);
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+});
+
+// Scroll reveal
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Animated counters
+const counters=document.querySelectorAll('[data-count]');
+const countObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    const el=entry.target,target=+el.dataset.count;
+    countObs.unobserve(el);
+    if(reduced){el.textContent=target.toLocaleString('en-US')+'+';return;}
+    const dur=1400,start=performance.now();
+    function tick(now){
+      const p=Math.min((now-start)/dur,1);
+      el.textContent=Math.floor(target*(1-Math.pow(1-p,3))).toLocaleString('en-US')+(p===1?'+':'');
+      if(p<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+},{threshold:.5});
+counters.forEach(c=>countObs.observe(c));
+
+// Contact form (demo — connect to your backend or a service like Formspree)
+function handleSubmit(e){
+  e.preventDefault();
+  e.target.reset();
+  document.getElementById('formSuccess').style.display='block';
+  setTimeout(()=>document.getElementById('formSuccess').style.display='none',6000);
+}
+</script>
+</body>
+</html>
